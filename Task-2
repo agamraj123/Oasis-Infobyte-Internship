@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tribute to Virat Kohli</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+    header {
+        background-color: #ff3b3f;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 2.5em;
+        margin: 0;
+    }
+    header p {
+        font-size: 1.2em;
+        margin: 5px 0 0;
+    }
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+    .image-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .image-section img {
+        max-width: 45%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    }
+    .content-section {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .content-section h2 {
+        color: #ff3b3f;
+    }
+    ul {
+        padding-left: 20px;
+    }
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #333;
+        color: white;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Tribute to Virat Kohli</h1>
+    <p>The Run Machine of Indian Cricket</p>
+</header>
+
+<div class="container">
+
+    <div class="image-section">
+        <img src="./virat-kohli-yc8dfpcjssp3s4se.jpg" alt="Virat Kohli">
+    </div>
+
+    <div class="content-section">
+        <h2>About Virat Kohli</h2>
+        <p>
+            Virat Kohli, born on 5th November 1988 in Delhi, India, is one of the greatest cricketers of all time. Known for his aggressive batting style, consistency, and unmatched passion for the game, Kohli has set benchmarks in modern cricket. He has captained the Indian team across all formats and led India to memorable victories around the globe.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Major Achievements</h2>
+        <ul>
+            <li>Former Captain of the Indian National Cricket Team in all formats.</li>
+            <li>First batsman to score 8,000, 9,000, 10,000, 11,000, and 12,000 runs in ODIs fastest.</li>
+            <li>ICC Cricketer of the Year (2017, 2018).</li>
+            <li>Most centuries in run chases in ODIs.</li>
+            <li>Led India to its first-ever Test series win in Australia (2018-19).</li>
+            <li>Scored more than 70 international centuries.</li>
+            <li>Winner of ICC Spirit of Cricket Award (2019).</li>
+            <li>Padma Shri awardee (2017) and Rajiv Gandhi Khel Ratna awardee (2018).</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Career Highlights</h2>
+        <p>
+            Virat Kohli made his international debut in August 2008 in an ODI against Sri Lanka. Over the years, he has evolved into one of the most consistent and dominant batsmen in cricket history. His remarkable fitness, discipline, and mental strength have inspired millions worldwide. Kohli's aggressive style of play, coupled with his unmatched ability to chase down targets, earned him the title "Chase Master."
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Legacy & Impact</h2>
+        <p>
+            Beyond his records, Virat Kohli has transformed the culture of Indian cricket, emphasizing fitness, professionalism, and self-belief. His dedication to the game and hunger for runs have made him a role model for aspiring cricketers. Even off the field, Kohli is known for his charitable contributions and active participation in social causes.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2025 Tribute Page | Created with ❤️ for Virat Kohli Fans
+</footer>
+
+</body>
+</html>
