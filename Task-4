@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth Pages</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      width: 320px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .input-group input:focus {
+      border: 1px solid #2575fc;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #2575fc;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #1b5ed9;
+    }
+
+    .extra-links {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .extra-links a {
+      font-size: 14px;
+      color: #2575fc;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* Success Page Styling */
+    .success-container {
+      text-align: center;
+    }
+
+    .success-container h2 {
+      color: green;
+    }
+
+    .success-container p {
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="container page active">
+    <h2>Login</h2>
+    <div id="error-msg" class="error">Invalid email or password</div>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter email" required>
+      </div>
+      <div class="input-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter password" required>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    <div class="extra-links">
+      <a onclick="showPage('forgotPage')">Forgot Password?</a> | 
+      <a onclick="showPage('signupPage')">Sign Up</a>
+    </div>
+  </div>
+
+  <!-- SIGNUP PAGE -->
+  <div id="signupPage" class="container page">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <div class="input-group">
+        <label for="signupUsername">Username</label>
+        <input type="text" id="signupUsername" placeholder="Choose username" required>
+      </div>
+      <div class="input-group">
+        <label for="signupEmail">Email</label>
+        <input type="email" id="signupEmail" placeholder="Enter email" required>
+      </div>
+      <div class="input-group">
+        <label for="signupPassword">Password</label>
+        <input type="password" id="signupPassword" placeholder="Create password" required>
+      </div>
+      <button type="submit" class="btn">Register</button>
+    </form>
+    <div class="extra-links">
+      <a onclick="showPage('loginPage')">Already have an account? Login</a>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD PAGE -->
+  <div id="forgotPage" class="container page">
+    <h2>Forgot Password</h2>
+    <form id="forgotForm">
+      <div class="input-group">
+        <label for="forgotEmail">Enter your email</label>
+        <input type="email" id="forgotEmail" placeholder="Enter email" required>
+      </div>
+      <button type="submit" class="btn">Reset Password</button>
+    </form>
+    <div class="extra-links">
+      <a onclick="showPage('loginPage')">Back to Login</a>
+    </div>
+  </div>
+
+  <!-- LOGIN SUCCESS PAGE -->
+  <div id="successPage" class="container page">
+    <div class="success-container">
+      <h2>✅ Login Successful!</h2>
+      <p>Welcome back, <span id="userNameDisplay"></span> 🎉</p>
+      <button class="btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    // Switch pages
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.getElementById(pageId).classList.add("active");
+    }
+
+    // ----------------- SIGNUP -----------------
+    const signupForm = document.getElementById("signupForm");
+    signupForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("signupUsername").value.trim();
+      const email = document.getElementById("signupEmail").value.trim();
+      const password = document.getElementById("signupPassword").value.trim();
+
+      // Save to localStorage
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPassword", password);
+      localStorage.setItem("userName", username);
+
+      alert("Account created for " + username + " ✅");
+      showPage("loginPage");
+    });
+
+    // ----------------- LOGIN -----------------
+    const loginForm = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("error-msg");
+
+    loginForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+
+      // Get stored user
+      const savedEmail = localStorage.getItem("userEmail");
+      const savedPassword = localStorage.getItem("userPassword");
+      const savedName = localStorage.getItem("userName");
+
+      if(email === savedEmail && password === savedPassword) {
+        document.getElementById("userNameDisplay").innerText = savedName;
+        errorMsg.style.display = "none";
+        showPage("successPage");
+      } else {
+        errorMsg.style.display = "block";
+      }
+    });
+
+    // ----------------- FORGOT PASSWORD -----------------
+    const forgotForm = document.getElementById("forgotForm");
+    forgotForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("forgotEmail").value.trim();
+      alert("Password reset link sent to " + email + " 📩");
+      showPage("loginPage");
+    });
+
+    // ----------------- LOGOUT -----------------
+    function logout() {
+      showPage("loginPage");
+    }
+  </script>
+
+</body>
+</html>
